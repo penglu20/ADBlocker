@@ -17,7 +17,6 @@
 
 package com.pl.adblocker.core;
 
-import com.pl.adblocker.ADBlocker;
 
 public final class Subscription extends JsValue {
 	static {

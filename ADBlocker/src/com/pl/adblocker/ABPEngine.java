@@ -139,10 +139,8 @@ public final class ABPEngine {
 	public void setSubscription(final String url) {
 		if (this.filterEngine.getSubscription(url).equals(
 				this.filterEngine.getListedSubscriptions().get(0))) {
-			Log.d("hpp_pl", "same url");
 			return;
 		}
-		Log.d("hpp_pl", "not same url");
 		for (final Subscription s : this.filterEngine.getListedSubscriptions()) {
 			s.removeFromList();
 		}

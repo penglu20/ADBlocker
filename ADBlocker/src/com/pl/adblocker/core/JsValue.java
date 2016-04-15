@@ -17,8 +17,6 @@
 
 package com.pl.adblocker.core;
 
-import com.pl.adblocker.ADBlocker;
-
 import java.util.List;
 
 public class JsValue implements Disposable {

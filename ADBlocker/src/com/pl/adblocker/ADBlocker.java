@@ -17,29 +17,20 @@
 
 package com.pl.adblocker;
 
+import java.io.File;
+import java.io.FileFilter;
+import java.util.List;
+import java.util.regex.Pattern;
+
 import android.app.Application;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
 import android.text.TextUtils;
 import android.util.Log;
 
 import com.pl.adblocker.core.FilterEngine.ContentType;
 
-import java.io.File;
-import java.io.FileFilter;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Enumeration;
-import java.util.List;
-import java.util.regex.Pattern;
-import java.util.zip.ZipEntry;
-import java.util.zip.ZipFile;
-
 public class ADBlocker {
-	private static final String TAG = Utils.getTag(ADBlocker.class);
 	public static final String ADBLOCKER = "adblocker";
 
 	private static final Pattern RE_JS = Pattern.compile("\\.js$",
@@ -54,7 +45,6 @@ public class ADBlocker {
 			Pattern.CASE_INSENSITIVE);
 
 	private static final String ADBLOCK_DIRECTORY = ADBLOCKER;
-	private static final String SO_NAME = "libadblocker.so";
 	private static final String INI_NAME = "patterns.ini";
 	private static final String SHARED_ENABLE = "enabled";
 	private static final String SHARED_SUBSCRIPTION = "subscription";

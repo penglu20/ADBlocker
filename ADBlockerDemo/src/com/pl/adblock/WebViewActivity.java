@@ -23,13 +23,11 @@ public class WebViewActivity extends Activity{
 		// TODO 自动生成的方法存根
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.webview_activity);
-//		ProxySetting2.setProxy(this.getApplicationContext(), "localhost", 2020);
 		addressEditText=(EditText) findViewById(R.id.address);
 		mWebView=(WebView) findViewById(R.id.webview);
 		mWebView.setWebViewClient(new MyWebViewClient());
 		mWebView.getSettings().setJavaScriptEnabled(true);
 		mWebView.setWebChromeClient(new WebChromeClient());
-//		WebView.setWebContentsDebuggingEnabled(true);
 		addressEditText.setOnKeyListener(new OnKeyListener() {			
 			@Override
 			public boolean onKey(View v, int keyCode, KeyEvent event) {

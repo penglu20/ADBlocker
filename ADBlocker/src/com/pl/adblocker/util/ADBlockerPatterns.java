@@ -5,8 +5,6 @@ import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -27,6 +25,11 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import android.util.Log;
+
+
+//因为AdBlockPlus内置的更新规则库的功能经常无法更新，所以实现了这个下载规则库的类，方便更新规则
+//如果能直接使用内置的更新功能，则会更方便更新，请自测选择如何使用
 public class ADBlockerPatterns{
 	private static final String PATTERN="\\[.*?";
 	private static final String CHARSET="UTF-8";
@@ -34,7 +37,7 @@ public class ADBlockerPatterns{
 	public boolean convertFile(String srcPath,String desPath) throws IOException{
 		String str=null;
 		boolean addedHeader=false;
-		System.out.println("convert start!");
+        Log.d("AdBlockNew","convert start!");
 		File srcFile=new File(srcPath);
 		File desFile=new File(desPath);
 		BufferedWriter fw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(desFile), CHARSET));
@@ -51,7 +54,7 @@ public class ADBlockerPatterns{
 		fw.flush();
 		fw.close();
 		fr.close();
-		System.out.println("convert over!");
+        Log.d("AdBlockNew","convert over!");
 		return true;
 	}
 	
@@ -98,7 +101,7 @@ public class ADBlockerPatterns{
 	public void getPatternsFile(String url,String srcPath) throws IOException{
         URL myURL = new URL(url);
         HttpURLConnection connection = null;
-        System.out.println("connecting to server!");
+        Log.d("AdBlockNew","connecting to server!");
         
         if (myURL.getProtocol().toUpperCase().equals("HTTPS")) {
 			trustAllHosts();
@@ -114,7 +117,7 @@ public class ADBlockerPatterns{
         InputStream insr = connection.getInputStream();
         BufferedWriter fw=new BufferedWriter(new OutputStreamWriter(new FileOutputStream(srcPath),CHARSET ));
 		BufferedReader fr=new BufferedReader(new InputStreamReader(insr,CHARSET));
-        System.out.println("download start!");
+        Log.d("AdBlockNew","download start!");
         String line=fr.readLine();
         while (line!=null) {
         	fw.write(line);
@@ -124,7 +127,7 @@ public class ADBlockerPatterns{
         fw.flush();
         fw.close();
         fr.close();
-        System.out.println("download over!");
+        Log.d("AdBlockNew","download over!");
 	}
 	
 	public static void trustAllHosts() {
@@ -162,12 +165,7 @@ public class ADBlockerPatterns{
 	};
 	
 	public static void main(String args[]){		
-//		String srcPath="E:\\download.txt";
-//		String desPath="E:\\pattern_test.ini";
-//		String url="https://adfiltering-rules.googlecode.com/svn/trunk/lastest/rules_for_ABP.txt";
-////		String url="https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt";
-//		boolean isDownload=true;
-		
+	
 		String srcPath=args[0];
 		String desPath=args[1];
 		String url=args[2];

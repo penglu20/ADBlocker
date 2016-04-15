@@ -12,6 +12,7 @@ AdBlockplus是通过设置wifi代理的方式，将手机全局的代理设置�
 
 
 下面是三个可以使用的规则地址（过滤强度依次减弱）：
+
 https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt
 https://easylist-downloads.adblockplus.org/easylistchina.txt
 https://adfiltering-rules.googlecode.com/svn/trunk/lastest/rules_for_ABP.txt

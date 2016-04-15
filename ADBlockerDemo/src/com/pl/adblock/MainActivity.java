@@ -1,19 +1,9 @@
 package com.pl.adblock;
 
 import java.io.File;
-import java.io.FileFilter;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-
-import com.pl.adblocker.ADBlocker;
-import com.pl.adblocker.util.ADBlockerPatterns;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
-import android.content.pm.PackageManager;
-import android.content.pm.ResolveInfo;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -22,6 +12,9 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.pl.adblocker.ADBlocker;
+import com.pl.adblocker.util.ADBlockerPatterns;
 
 
 public class MainActivity extends Activity {
@@ -143,7 +136,6 @@ public class MainActivity extends Activity {
 			@Override
 			public void onClick(View v) {
 				// TODO 自动生成的方法存根
-				ADBlocker.getInstance().setApplication(getApplication());
 				ADBlocker.getInstance().setEnabled(getApplication(), true);
 				try {
 //					ADBlocker.getInstance().startEngine();
@@ -192,7 +184,7 @@ public class MainActivity extends Activity {
 			
 	public void down1(View v){
 			down("https://adfiltering-rules.googlecode.com/svn/trunk/lastest/rules_for_ABP.txt");			
-		}
+	}
 	public void down2(View v){
 		down("https://easylist-downloads.adblockplus.org/easylistchina+easylist.txt");
 	}
@@ -202,6 +194,7 @@ public class MainActivity extends Activity {
 		
 		
 	public void down(final String url){
+		
 		new Thread(){
 			@Override
 			public void run(){
